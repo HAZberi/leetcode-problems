@@ -1,1 +1,8 @@
 **Notes:**
+
+1. A valid palindrome can be checked with two different solution. 1st solution is very simple and it requires the built in python methods and features. In this solution we start with a new empty string. The we loop over the input string and check whether each character is alphanumeric or not. If its an alphanumeric charater, we will add it to the newStr. Then outside the loop we return the comparision of input string with the reverse of the newStr. `newStr[::-1]`. This solution is usually what interviewers are not looking for. It has a O(n) space complexity since it requires reversing a string and creating a new string.
+2. The second solution, optimal solution, which has space complexity O(1) and the time complexity of O(n). This can be done via two pointer technique.
+3. We initiate two pointers and do while loop with the termination conditon that left pointer crosses the right pointer. Then we make the comparisions between left and right characters.
+4. Before doing the comparisions we have to cater edge cases as well. For this we need create a helper function alphanumeric which takes a character and tells us whether the character is alphanumeric or not. a-z, A-Z, and 0-9 has continous ASCII values, we can create a simple check that will check the range of character like so `ord("A") <= ord(c) <= ord("Z")` for all three ranges.
+5. Then in the main function, after the initial while loop. We have to use two more while loops. Both of the loops will have termination condition that (the current character is not alphanumeric and the left pointer is greater than right) then we increment the pointers.
+6. After the two loops, we compare only the **lowercase** characters from left and right pointers.
