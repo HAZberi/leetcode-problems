@@ -1,1 +1,5 @@
 **Notes:**
+
+1. The brute force solution of this problem suggests a nested loop where we pick a value in outer loop and in the inner loop we sum it with all the values one by one. The important point is that the second loop terminates where the sum is greater than target. We pick the second value and repeat the process and keep on checking the current sum and the target. If we arrive at the guaranteed solution we simply return the indices plus 1.
+2. The second solution involves a two pointer to traverse the array. One starting from left, One starting from right. As long as the left pointer is not crossing the right pointer. We sum the values at the current pointers. If the sum is greater than the target, in a sorted array it means any greater values than the value at right pointer will never add up to the target. So we decrement the right pointer. If the sum is smaller than the target, in a sorted array it means current value at the left pointer will never add up the target. So we increment the left pointer.
+3. The last check is if current sum is equal to the target. In that case we will simply return the left and right pointer plus one.
