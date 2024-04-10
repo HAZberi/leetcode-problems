@@ -7,3 +7,15 @@
 5. If we encounter open parathesis we just append it to the stack.
 6. if we encounter close parathesis we check it in our hashmap and also peek the stack (basically check last value in the stack `[-1]`) . If the last value is equal to the value of the closing parenthesis in our hashmap. We pop out the last element. Otherwise we will simply return false.
 7. At the end we just need to check whether the stack is empty or not, if there are no values in stack we return true, otherwise false.
+
+classSolution(object):
+
+defisValid(self, s):
+
+"""
+
+    :type s: str
+
+    :rtype: bool
+
+    """
