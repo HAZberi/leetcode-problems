@@ -23,6 +23,7 @@ class Solution(object):
             return False 
 
         L, R = 0, COLS - 1
+        row = (top + bottom) // 2
         while (L <= R):
             mid = (L + R) // 2
 
