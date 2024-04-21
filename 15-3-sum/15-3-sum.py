@@ -23,10 +23,9 @@ class Solution(object):
                     L += 1
                 else:
                     res.append([n, nums[L], nums[R]])
-                
-                L += 1
-                while L < R and nums[L] == nums[L - 1]:
                     L += 1
+                    while L < R and nums[L] == nums[L - 1]:
+                        L += 1
         return res
 
 #Test Cases
