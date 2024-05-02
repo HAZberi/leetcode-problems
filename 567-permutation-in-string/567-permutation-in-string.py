@@ -10,25 +10,22 @@ class Solution: #O(26)
             countS1[s] = 1 + countS1.get(s, 0)
 
         L = 0
-        for R in range(len(s2)):
+        for R in range(len(s2)):          
             window[s2[R]] = 1 + window.get(s2[R], 0)
-            
-            if (R - L + 1) > len(s1):
+
+            if (R - L + 1) > len(s1) - 1:
                 matches = 0
-                for char in window:
-                    if char not in countS1 and window[char] != countS1.get(char, 0):
-                        break
-                    else:
+                for char in countS1:
+                    if char in window and window[char] >= countS1.get(char, 0):
                         matches += 1
                 
                 if matches == len(countS1):
                     return True
-                if window[s2[L]] > 1:
-                    window[s2[L]] -= 1
-                else:
-                    del window[s2[L]]
+                
+                window[s2[L]] -= 1
                 L += 1
         
+
         return False
 
 
@@ -77,7 +74,9 @@ print(mySolution.checkInclusion("adc", "dcda"))
 print(mySolution.checkInclusion("ab", "eidboaio"))
 print(mySolution.checkInclusion("abc", "bcaa"))
 print(mySolution.checkInclusion("abb", "bbaa"))
+print(mySolution.checkInclusion("ab", "bca"))
 print(myOptimizedSolution.checkInclusion("adc", "dcda"))
 print(myOptimizedSolution.checkInclusion("ab", "eidboaio"))
 print(myOptimizedSolution.checkInclusion("abc", "bcaa"))
 print(myOptimizedSolution.checkInclusion("abb", "bbaa"))
+print(myOptimizedSolution.checkInclusion("ab", "bca"))
