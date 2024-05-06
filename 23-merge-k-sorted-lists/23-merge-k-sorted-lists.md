@@ -1,0 +1,10 @@
+**Notes:**
+
+1. The most brute force approach of this problem is to pick one list merge it with the second list. Then merge this merged list with the third list and keep of merging list one by one. Since we have k number of lists and n number of nodes. The time complexity for this approach is O(n . k).
+2. The second solution stems from the idea of merge sort. We take the first two list merge them and say it a. Then we take the third and fourth list merge them and say it b. If we only have four lists to merge then at this point. We take both a (merged) and b (merged) and merge them. We will have our final list. At each step we are reducing k by half. This merging of list is O(log k). Since we have n number of nodes. This approach will yeidl a time complexity of O(n.logk)
+3. There is a Leetcode Easy question (21) where we merged two list. So we will use the exact same algorithm when we are merging two list. Since there are no changes to that algorithm we wont be discussing it here.
+4. So first step is to check whether there are lists available or the length of list is zero. In that case we simply return None.
+5. Then we run a while loop till the length of lists is greater than 1. Or we can say keep running the loop until we have at least two lists. We then initialized a temp mergedlists variable where we store all the merged lists. Then we start a for loop on lists with increments of 2. Because at each iteration we have two lists to merge. One at the ith index and the second at i + 1 index. The list that is at i + 1 index can go out of bounds in case if the lenght of list is odd. So we check if i + 1 is less than the length of lists, if not then we set this list to null.
+6. We call the helper function that merge two sorted lists and append the result to the mergedlists variable before moving on to the next iteration.
+7. Once we get to the end of the list. We exit the loop and set our original lists  to temp mergedlist variable. And move on to the next iteration of while loop.
+8. Once that is done we return the first list from the original lists variable.
