@@ -1,0 +1,10 @@
+**Notes:**
+
+1. The problem ask us to reverse the elements in the k group sub list of length k and if there is no valid k group sub list of length k, we return the remaining list as is.
+2. Since we need to change pointers and we also want to avoid edge cases like if None then create new cases we initial we a dumy pointer. Since there can be multiple lists, we need to keep track prev node of the goup. So we can convineinetly set this dummy to the prev group node.
+3. Here we can run a simple loop (while True) and we will exit the loop whenever we reach to the end of the list. Inside the loop, we will fist find the end the of the group list by finding the kth node.
+4. To find the kth node we use a helper function. For arguments of this helper function we can pas the group prev node and the value of k. Inside the helper function if the curr becomes null or k > 0 we keep on moving the curr and decrementing the value of k.
+5. Once we have the kth node. First we need to check whether kth node is null. If its null we break out of the loop. We need to keep track of start of next possible group. So the next group node is available at the next of kth node.
+6. Now we have to reverse this group list. We set the prev pointer to next group node (because the first node in this sub list will become the last node in this list after the reversal is complete.). Our curr pointer is set to the next of prev node group. (this is the first node in this sub list and this is where we start the reversing). The while loop run till the curr pointer reaches to the next group node. Then we store the next of current in a temporary variable and set the next of current to the prev. Then move the pointers by setting prev to curr and curr to temporay variable.
+7. Then we set the next of the prev group node in a temporary variable (this is now the last node in this sub list). Then we set this next of the prev group node to the kth node. This completes the link between last group list to this group list. Then we have to move the prev group node the one that we stored in the temporay variable.
+8. Outside the simple loop we return the next of dummy.
