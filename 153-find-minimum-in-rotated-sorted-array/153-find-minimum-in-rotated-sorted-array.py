@@ -13,6 +13,7 @@ class Solution(object):
                 break
 
             mid = (l + r) // 2
+            res = min(res, nums[mid])
             if (nums[l] <= nums[mid]):
                 l = mid + 1
             else:
