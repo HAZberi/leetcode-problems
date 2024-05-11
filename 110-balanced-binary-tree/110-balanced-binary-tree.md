@@ -1,0 +1,9 @@
+**Notes:** 
+
+1. The problem asks to find whether the given tree is height balanced. What do  they mean by height balanced? Basically the difference between the left subtree and right subtree should not be greater than 1.
+2. Lets go over the brute force approach of solving this question. For each node we have to calculate the height of the left subtree and then calculate the height of right subtree. Once we have the heights of both subtrees, then we do the comparision whether the absolute differnce between the heights of subtree is greater than 1. This way we visit all the nodes when we are checking the balance property for each node. Thats why the time complexity of this approach is O(n ^ 2)
+3. The optimal approach is recursive depth first search. This solution will yeild O(n).
+4. We traverse to the leftmost leaf node first until its left child is null. Whenever we reach a null node, it will be balanced and the height will be zero. This will be our base case. We will keep the balanced status and height in a list and our dfs method will always return this list, where first index is the balance status and second index is the height of the node. We have the height of leaf node's left child, similary then we go to the right child find its height.
+5. Once we have both the heights of left and right subtrees. We do the comparision, if left tree is balanced AND right tree is balanced AND the absolute difference between left and right subtrees height is less than equal to 1, then we have a balanced node. `left and right and abs(leftH - rightH) <= 1`
+6. Then we have to return from this recursive function. We have to return two things in the list. The balanced status we found in the above step at index 0 and the height of this node which is `1 + Max(height of left, height of right)`
+7. Then outside the recursive function we return the first index of the return value of our recursive function.
