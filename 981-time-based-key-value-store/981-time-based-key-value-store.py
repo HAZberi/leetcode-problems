@@ -9,9 +9,9 @@ class TimeMap:
         self.store[key].append([value, timestamp])
 
     def get(self, key: str, timestamp: int) -> str:
-        values = self.store[key]
-
         res = ""
+        values = self.store.get(key, [])
+
         l, r = 0, len(values) - 1
         while (l <= r):
             mid = (l + r) // 2
