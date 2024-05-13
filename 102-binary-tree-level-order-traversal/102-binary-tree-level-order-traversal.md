@@ -9,3 +9,4 @@
 7. The we start an inner for loop, that runs till the current length of queue. Inside this loop we first pop left a node. Append it to the level list. Then we check if this node has a left child. If yes, we append the left child to the queue. Then we check if this node has a right child. If yes we append the right child to the queue.
 8. Once the for loop exits. We append the level list to our result. An then move on to the next iteration of the outer loop. And continue the same process.
 9. At the end return the result.
+10. The time complexity of this solution is O(n) and the space complexity is also O(n) since we are using a queue.
