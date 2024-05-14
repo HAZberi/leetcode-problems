@@ -49,6 +49,8 @@ def insert(root: TreeNode, val:int, visited):
             if not curr.left:
                 visited[curr][0] = 0 
             break
+        elif not curr.left and visited[curr][0] == 0:
+            visited[curr][0] = 0
         else:
             queue.append(curr.left)
         if not curr.right and curr not in visited:
@@ -62,6 +64,8 @@ def insert(root: TreeNode, val:int, visited):
             if not curr.right:
                 visited[curr][1] = 1
             break
+        elif not curr.right and visited[curr][1] == 1:
+            visited[curr][1] = 1
         else:
             queue.append(curr.right)
         
@@ -78,6 +82,6 @@ def populateTree(list: List) -> Optional[TreeNode]:
 
 #Test Cases:
 mySolution = Solution()
-print("Test Case 1: ", mySolution.rightSideView(populateTree([1,2,3,None,5,None,4])))
+print("Test Case 1: ", mySolution.rightSideView(populateTree([1,2,3,None,5,None,4,None,None,None,7,None,None,None,None])))
 print("Test Case 2: ", mySolution.rightSideView(populateTree([1,None,3])))
 print("Test Case 3: ", mySolution.rightSideView(populateTree([])))
