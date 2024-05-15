@@ -14,7 +14,7 @@ class Solution:
 
         while True:
             midA = (l + r) // 2
-            midB = half - midA - 2 #Correct index of midpoint
+            midB = half - (midA + 1) - 1 #Correct index of midpoint
 
             ALeft = A[midA] if midA >= 0 else float("-inf")
             BLeft = B[midB] if midB >= 0 else float("-inf")
