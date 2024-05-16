@@ -16,7 +16,7 @@ class Solution:
             if not (root.val > left and root.val < right):
                 return False
             
-            return (self.isValidBST(root.left, left, root.val) and self.isValidBST(root.right, root.val, right))
+            return (dfs(root.left, left, root.val) and dfs(root.right, root.val, right))
         
         return dfs(root, float("-inf"), float("inf"))
     
