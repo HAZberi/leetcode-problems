@@ -12,3 +12,4 @@
 8. Now we have to update the result max sum. `max(maxSum, node.val + leftmax + rightmax)`
 9. The return statement for our recursive function will basically add the current node value to the maximum of leftmax and rightmax. This will be the sum without the split. `node.val + max(leftmax, rightmax)`
 10. Outside the recursive fuction we will call the recursive function which update the max sum and then we simply return max sum.
+11. Since we are visiting each node only once. So the time complexity of this algorithm is O(n)
