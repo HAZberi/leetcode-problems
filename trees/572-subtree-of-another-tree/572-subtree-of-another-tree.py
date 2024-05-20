@@ -46,9 +46,10 @@ def insert(root: TreeNode, val:int, visited):
             if not curr.left:
                 visited[curr][0] = 0 
             break
+        elif not curr.left and visited[curr][0] == 0:
+            visited[curr][0] = 0
         else:
             queue.append(curr.left)
-
         if not curr.right and curr not in visited:
             curr.right = TreeNode(val) if val or val==0 else None
             if not curr.right:
@@ -60,6 +61,8 @@ def insert(root: TreeNode, val:int, visited):
             if not curr.right:
                 visited[curr][1] = 1
             break
+        elif not curr.right and visited[curr][1] == 1:
+            visited[curr][1] = 1
         else:
             queue.append(curr.right)
         

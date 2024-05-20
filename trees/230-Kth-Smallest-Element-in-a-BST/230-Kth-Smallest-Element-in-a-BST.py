@@ -26,7 +26,7 @@ class Solution:
         
 def insert(root: TreeNode, val:int, visited):
     if not root:
-        root = TreeNode(val) if val else None
+        root = TreeNode(val) if val or val==0 else None
         return 
     
     queue = deque()
@@ -34,13 +34,13 @@ def insert(root: TreeNode, val:int, visited):
     while len(queue) > 0:
         curr = queue.popleft()
         if not curr.left and curr not in visited:
-            curr.left = TreeNode(val) if val else None
+            curr.left = TreeNode(val) if val or val==0 else None
             if not curr.left:
                 visited[curr] = [-1, -1]
                 visited[curr][0] = 0
             break
         elif not curr.left and curr in visited and visited[curr][0] != 0:
-            curr.left = TreeNode(val) if val else None
+            curr.left = TreeNode(val) if val or val==0 else None
             if not curr.left:
                 visited[curr][0] = 0 
             break
@@ -49,13 +49,13 @@ def insert(root: TreeNode, val:int, visited):
         else:
             queue.append(curr.left)
         if not curr.right and curr not in visited:
-            curr.right = TreeNode(val) if val else None
+            curr.right = TreeNode(val) if val or val==0 else None
             if not curr.right:
                 visited[curr] = [-1, -1]
                 visited[curr][1] = 1
             break
         elif not curr.right and curr in visited and visited[curr][1] != 1:
-            curr.right = TreeNode(val) if val else None
+            curr.right = TreeNode(val) if val or val==0 else None
             if not curr.right:
                 visited[curr][1] = 1
             break
