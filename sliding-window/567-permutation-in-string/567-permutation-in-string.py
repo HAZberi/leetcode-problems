@@ -53,15 +53,17 @@ class OptimizedSolution: #O(n)
             countS2[index] += 1
             if countS1[index] == countS2[index]:
                 matches += 1
-            else:
+            elif countS1[index] + 1 == countS2[index]:
                 matches -= 1
 
             index = ord(s2[L]) - ord('a')
             countS2[index] -= 1
             if countS1[index] == countS2[index]:
                 matches += 1
-            else:
+            elif countS1[index] - 1 == countS2[index]:
                 matches -= 1
+            
+            L += 1
         
         return matches == 26
 
@@ -71,12 +73,12 @@ mySolution = Solution()
 myOptimizedSolution = OptimizedSolution()
 
 print(mySolution.checkInclusion("adc", "dcda"))
-print(mySolution.checkInclusion("ab", "eidboaio"))
+print(mySolution.checkInclusion("ab", "eidbaoio"))
 print(mySolution.checkInclusion("abc", "bcaa"))
 print(mySolution.checkInclusion("abb", "bbaa"))
 print(mySolution.checkInclusion("ab", "bca"))
 print(myOptimizedSolution.checkInclusion("adc", "dcda"))
-print(myOptimizedSolution.checkInclusion("ab", "eidboaio"))
+print(myOptimizedSolution.checkInclusion("ab", "eidbaoio"))
 print(myOptimizedSolution.checkInclusion("abc", "bcaa"))
 print(myOptimizedSolution.checkInclusion("abb", "bbaa"))
 print(myOptimizedSolution.checkInclusion("ab", "bca"))

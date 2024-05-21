@@ -1,4 +1,4 @@
-**Notes:** 
+**Notes:**
 
 1. This problem asks us to find whether there is a permutation of string s1 is found in s2. It means, is there any combination of the characters of s1 is present s2.
 2. There are two approaches to this problem. O(m.n) or O(26.n). Since all the letter are lowercase "a-z". The second approach yeilds an O(n) solution.
@@ -7,5 +7,6 @@
 5. The second solution also involves 2 data structures; one for s1 and second for s2, but we have to do this arrays. The length of these arrays should be 26 because we have only 'a' to 'z' characters. The indices represent the char `ord(char) - ord('a')` . The values represents the counts.
 6. We intiate both the arrays by calculating all the counts of s1 and the starting counts of s2. Then we calculate all the 26 matches and intialize the matches variable.
 7. Then we start our sliding window where the right pointer starts from the length of s1 and ends at the length of s2. First step is to check if we have 26 matches, if yes then we simply retrun True.
-8. Now we have to add a value to our window. We increment the counts of s2 for character at right pointer. Then we check if the count is equal to the char count in s1. If it is we increment the matches by 1. Otherwise if the char count + 1 in s1count is equal to char count at right pointer then we decrement the matches by 1.
-9. Now we have to remove a value from our window. We decrement the counts of s2 for character at right pointer. Then we check if the count is equal to the char count in s1. If it, is we increment the matches by 1. Otherwise if the char count - 1 in s1count is equal to char count at right pointer we decrement the matches by 1.
+8. Now we have to add a value to our window. We increment the counts of s2 for character at right pointer. Then we check if the count is equal to the char count in s1. If it is we increment the matches by 1. Otherwise if the char count + 1 in s1count is equal to char count at right pointer, meaning counts were equal before but now the s2 count has become too large (by 1) then we decrement the matches by 1.
+9. Now we have to remove a value from our window. We decrement the counts of s2 for character at left pointer. Then we check if the count is equal to the char count in s1. If it, is we increment the matches by 1. Otherwise if the char count - 1 in s1count is equal to char count at left pointer, meaning counts were equal before but now the s2 count has become too small (by 1) then we decrement the matches by 1.
+10. Once that is done we will increment the left pointer.
