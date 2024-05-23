@@ -9,4 +9,4 @@
 7. The second base case if the iterator i is greater or equal to the length of given list, Meaning we will reach the end of the list. OR if the total of current combination is greater than target. Then simply return.
 8. Then we will take our first decision of the decision tree. We will include the current value at ith to the current subset. After that we will make the recursive call where we will basically pick the same value by passing i, the current combination and total + current value (summing up current combination).
 9. Then we will undo the above decision by poping off from the current combination and after that we will make the decision to not include the same value instead choose the next value in the list. So we will make the recursive call by passing i + 1 for next value, while current combination and total will remain as is.
-10. Outside the recursive function we will simply call the recursive function which will populate the resultant list. Then simply return the resultatnt list.
+10. Outside the recursive function we will simply call the recursive function which will populate the resultant list. Then simply return the resultant list.
