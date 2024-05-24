@@ -8,7 +8,7 @@ class Solution:
         for char in t:
             countT[char] = 1 + countT.get(char, 0)
 
-        have, need = 0, len(t)
+        have, need = 0, len(countT)
         res = [-1, -1]
         resLen = float("inf")
         L = 0
