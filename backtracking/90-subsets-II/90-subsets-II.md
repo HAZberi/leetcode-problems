@@ -8,4 +8,4 @@
 6. Our base case is whenever we reach the end of the given list. At that point we wiil simply append the copy of current subset to our resultant list.
 7. After that we have two choice to make, One to include the current element in the subset, we will simply append the current element to the current subset. Then we will call the recursive function with an increment to the i iterator.
 8. Then we will have to make our second choice, which is not to include the current element. So we pop for the current subset. Then we will have to run a loop untill our iterator goes out of bounds and current element is equal to the next element, we will keep incrementing our iterator. After that we simply call our recursive function with an increment to the i iterator.
-9. Outside the recursive fucntion we will simply call the backtracking function with initial i=0 and current subset = []. and return the function call.
+9. Outside the recursive fucntion we will simply call the backtracking function with initial i=0 and current subset = []. and then return the result.
