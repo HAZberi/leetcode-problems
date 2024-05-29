@@ -1,26 +1,27 @@
+import heapq
 from typing import List
 
 
 class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):
-        self.maxHeap = [0]
-        self.k = k
-        for n in nums:
-            self.push(n)
+        self.minHeap, self.k = nums, k
+        heapq.heapify(self.minHeap)
+        while len(self.minHeap) > k:
+            heapq.heappop(self.minHeap)
 
     def add(self, val: int) -> int:
-        self.push(val)
-        return self.maxHeap[self.k]
-    
-    def push(self, val: int):
-        self.maxHeap.append(val)
-        i = len(self.maxHeap) - 1
+        heapq.heappush(self.minHeap, val)
+        if len(self.minHeap) > self.k:
+            heapq.heappop(self.minHeap)
 
-        #percolate up
-        while self.maxHeap[i] > self.maxHeap[i // 2]:
-            temp = self.maxHeap[i]
-            self.maxHeap[i] = self.maxHeap[i // 2]
-            self.maxHeap[i // 2] = temp
-            i = i // 2
+        return self.minHeap[0]
+
+#Test Cases
+mySolution = KthLargest(3, [4, 5, 8, 2])
+print(mySolution.add(3))
+print(mySolution.add(5))
+print(mySolution.add(10))
+print(mySolution.add(9))
+print(mySolution.add(4))
     
