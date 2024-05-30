@@ -1,0 +1,39 @@
+import heapq
+from typing import List
+
+
+class HeapSolution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        maxHeap = [-n for n in nums]
+        heapq.heapify(maxHeap)
+
+        res = -1
+        while k > 0:
+            res = -heapq.heappop(maxHeap)
+            k -= 1
+
+        return res 
+
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        k = len(nums) - k #goal index
+
+        def quickselect(l, r):
+            pivot, p = nums[r], l
+            for i in range(l, r):
+                if nums[i] <= pivot:
+                    nums[p], nums[i] = nums[i], nums[p]
+                    p += 1
+            nums[p], nums[r] = nums[r], nums[p]
+
+            if p > k: return quickselect(l, p - 1)
+            elif p < k: return quickselect(p + 1, r)
+            else: return nums[p]
+        
+        return quickselect(0, len(nums) - 1)
+
+#Test Cases
+mySolution = Solution()
+print("Test Case 1: ", mySolution.findKthLargest([3,2,1,5,6,4], 2))
+print("Test Case 2: ", mySolution.findKthLargest([3,2,3,1,2,4,5,5,6], 4))
+
