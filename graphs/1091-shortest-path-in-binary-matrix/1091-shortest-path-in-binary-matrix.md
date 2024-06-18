@@ -13,3 +13,5 @@
 8. Then we check for each direction pair (neighbour) whether the cell is out of bounds or previously visited or blocked. If thats the case then we will simply ignore it by continuing to the next iteration. If we can move to any neightbouring cell then we will add it to the queue and also add it to the visited hashset.
 9. Outside this for loop where we process all the cells in the same level. We increment the length by 1 and continue to the next iteration of the while loop.
 10. If we reach the destination by doing so then we would have returned the length as mentioned in the step 5. Otherwise we will simply return -1, meaing there is no path between the top left and bottom right cell.
+
+**I have also coded the neetcode solution which is a slight variation of the solution I proposed for a better understanding of myself. But in leetcode my solution run a lot slower than neetcodes solution. Where the main difference is calculating the length and use only 1 loop to add cells to the queue. Neetcode solution is significantly faster. So my recommendation is to always review both solutions and must know the differences between the two.**
