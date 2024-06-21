@@ -9,3 +9,23 @@
    3. In order to make the complete copy of this node, we have to copy all the neighbours. Since we have to make the copy we will make our recursivec call on each neighbour of the current old node to make the true copy of the neighbours and append the copy to current copy node's neighbours list.
 5. Once we have deep copied all the neighbours of the current copy node, we will simply return the copy node.
 6. Outside of our dfs function we will simply call this recursive dfs function with given graph node and return it if the given graph node is not null otherwise we will simply return None.
+
+"""
+
+# Definition for a Node.
+
+class Node:
+
+    def__init__(self, val = 0, neighbors = None):
+
+    self.val = val
+
+    self.neighbors = neighbors if neighbors is not None else []
+
+"""
+
+from typing import Optional
+
+classSolution:
+
+defcloneGraph(self, node: Optional['Node']) -> Optional['Node']:
