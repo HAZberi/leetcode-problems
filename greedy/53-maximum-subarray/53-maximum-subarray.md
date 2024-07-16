@@ -1,0 +1,9 @@
+**Notes:**
+
+1. The problem asks us to find the maximum sum that can be computed from a subarray of a given list of intergers (positive and negative).
+2. The brute force approach is to loop over the list strating with i = 0 to n -1. Then an inner loop that starts from i to n-1. Now we have an starting index of a subarray i and an ending index of the subarray j. Then another second inner loop that iterates over this subarray for i to j. In this loop we calculate the sum of the subarray and after calculating the sum out side the loop we update the global max sum. This approach leads to O(n ^ 3) solution.
+3. The second approach is to keep a variable current sum. Then do a nested loop like we did in the brute force approach where i is the starting index and j is the ending index. We keep on adding values at j index to this current sum. Once the j loop ends. We update the global max and set the current Sum back to 0. This approach is better than the previous one but this one takes O(n ^ 2).
+4. To achieve O(n) time complexity, a more optimal solution uses kadanes algorithm. Here we will have two global variables a cursum and maxsum. We initialize the current sum to be 0 and initialize the maxsum to the first value in the list.
+5. Then we go over the list. Add each value to the current sum. But before that we will if currsum up until this point is less than zero. If the current sum up until this point is negative then we set the current sum to zero. Meaning we will only include the new value to currsum and disregard everything before it.
+6. Now when should we update the maxsum? Once we have added a new value to currsum, we will check whether the new currsum is greater than the maxsum, if it is then we update the maximum sum. Otherwise the maxSum will remain as is.
+7. Outside the loop we will simply return the maxSum.
