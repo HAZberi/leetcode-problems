@@ -1,0 +1,14 @@
+**Notes:**
+
+1. The problem asks us find whether we can form groups of consecutive cards of a given group size or not from the given list of hand. Each card is represented by a positive interger number.
+2. Thinking to solve this problem with brute force will be highly inefficent. So it is better look how can we simplify the given list into groups of given group size. Right of the bat we have our main edge case. If the length of the hand is not divisble by group size, we cannot make the groups of group size, so we simply return False in this case.
+3. Now after handling that edge case we need two things to form the groups of consecutive cards of the group size.
+   1. A way to find the consecutive numbers from the list in O(1) time
+   2. Find the smallest number to start the group
+4. In order to find consecutive numbers we can count the frequency of numbers of the given list of hand in to a Hashmap, where each key represents a number and value represents the frequency. This will be helpful, whenever we are looking for the next consecutive number, we can simply look it up in the frequency map, if its in the frequency map, we make it part of the group and if its not in the frequency map then we were not able to find the next consecutive number and should return False immidiately.
+5. We have to be greedy solving this problem, meaning the start of each group should be from the lowest card available to us. So one naive way of find the minimum is to take minimum of the keys of frequency map. But this operative will O(n) time and it will make the entire solution in order of O(n ^ 2). We go from O(n) to O(logn) is we use a min Heap to find the smallest value. So we take all the keys of the frequency map and put those keys in a min Heap and call heapify.
+6. Now we will run a loop until our min Heap becomes empty. At each level/Group, first of all we find the smallest card from the heap. Then we run an inner loop that runs from the smallest card to the smallest card + group size. This loop ensures we have consecutive values. For each value we will check our frequency map, if its not in the frequency map or its value is less than zero, we will simply return False.
+7. If the value exists in the map, we decrement its frequency by 1. Then we check whether its frequency is equal to zero.
+8. If frequency of the current card number is zero and it's not the smallest element in the heap, this also means we cannot for the group. This will mean and guarantee that there will a gap in any of the remaining groups. So we must return False in this case as well. Also if the frequency of current card number is zero, after checking the heap we should also pop this element from the heap.
+9. Once our heap is empty, we can simply return True.
+10. The time complexity of this algorithm is O(n.logn). We go over all the elements and check minimum at every group level. If we try to closely write the big o notation then is O(handLength.log(groupSize)).
