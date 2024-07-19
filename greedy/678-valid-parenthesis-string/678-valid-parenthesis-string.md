@@ -1,0 +1,21 @@
+**Notes:**
+
+1. The problem asks us to find whether a given string containing open/closed parenthesis and a wildcard * is valid. The order of the parenthesis should be correct. The asterik character can be replaced by a "(" or ")" of "".
+2. The brute force way to tackle this problem is to draw a decision tree, where we will have a choice whenever we get a wildcard character, we either pick "(" or pick ")" or pick "". We traverse the entire tree till the end of the list and if we have left open parenthesis equal zero. We have to simply keep the count of left open parenthesis. Whenever we encounter a ")" we decrement from the left parenthesis count and whever we encounter "(" we increment the left parenthesis count and if its a "" then the left parenthesis count will remain as is. But this approach will lead to a time complexity of O(3 ^ n) because of the three choices.
+3. We can use dynamic programming and memoize it to reduce the time complexity but still it would be O(n^3). But lets implement this solution as well. We will need a dp hashmap. But what should be the keys of this hashmap. For every index we traverse we should know the left parenenthesis count. So over recursive DFS method will have two parameters an index and a left count. A tuple of index and left count should be our key of the dp hashmap. If we get to the end of the list we should check if left parenthesis is equal to zero. If left parenthesis are equal to zero we return True otherwise we return false. So for our dp Hashmap, our default is when we reach the end of the list, so index equal length of string and left count as 0 should be the key of dp hashmap and it should be set to True.
+4. Now in the recursive DFS method after we handles our base case. Then we write our memoization case. If the input already exists in the dp, we simply return its result.
+5. Then we will write our recursive cases. We will have 3 recursive cases:
+   1. If current character at index i is equal to "(", we make the recursive call with next index (i+1) and increment the left count.
+   2. if current character at index i is equal to ")", we make the recursive call with next index(i+1) and decrement the left count.
+   3. if current character at index i is equal to "*", we will have three choices so we take the OR of three recursive calls:
+      1. recursive call with index (i+1) and increment the left count. Considering "(".
+      2. recursive call with index (i+1) and decrement the left count. Considering ")".
+      3. recursive call with index (i+1) and keep the left count as is. Considering "".
+6. Outside the function we simply call and return the recursive DFS method with index 0 and left count 0.
+7. Now we look to the most optimal solution which is a greedy solution. It will run in O(n) time. So if we try to read the string from left we can keep track of the number of left open parenthesis like we did in the dp solution. If we encounter a "(" we increment and if we encounter a ")" we decrement. So whenever we get an asterick we will have three chices, in one choice [empty string] we dont do anything for the left count. In other two choices we either increment or decrement the left count. It means we can simply have a leftmax and leftmin. So we keep track of two values. And the we update these two variables is as follows.
+   1. If current character at index i is equal to "(", we increment both leftmin and leftmax.
+   2. If current character at index i is equal to ")", we decrement both leftmin and leftmax.
+   3. If current character at index i is equal to "", we increment to the leftMax and decrement to the leftmin.
+8. So leftmin means every asterik is a closed parenthesis. So if the leftmin goes below zero we reset it to zero. It means we have used an asterick. And it means there is a chance that string will be valid.
+9. And leftmax means every asterik is an open pararenthesis. If leftmax goes below zero, we return False right away. Leftmax is the maximum amount of open parenthesis possible. If that goes below zero it means that there are more closed parenthesis than the max possible left open parenthesis.
+10. If the leftmin == 0 at the end, meaning we were able to successfully close all the parenthesis. So we simply do the check and return its result.
