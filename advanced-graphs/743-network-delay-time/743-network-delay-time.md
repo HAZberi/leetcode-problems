@@ -1,0 +1,12 @@
+**Notes:**
+
+1. The problems ask us to find the minimum time required to reach all the singnals from the starting sorce. We are given a list of weighted edges, where 0-index is the source, 1-index is the destination, 2-index is the time/weight.
+2. This problem is uses Dijkstra's Algorithm. It is the main requirement for solving this question.
+3. Since we are given a list of weighted edges, we transform these edges into an adjacency list. Where the neighbour's list has tuples (destination, weight).
+4. Then we need a visited hashset, to keep track of the nodes that has been visited, so we dont add those to the heap again.
+5. We also need a res variable and we keep on updating it for each node. Basically taking the max of current total with the new path length.
+6. Since its a Dijkstra Algorithm we can only move to the node with the minimum weight. So when we traverse the neighbours we want to process those nodes that has the minimum weight. That why we will use a minHeap. And initialize it to k node. The k node is the starting node, getting there is has 0 time. So our heap will also have tuples by in this order. (pathlength, node).
+7. We go over the heap, and pop the node with minimum time/weight. Check if the node has already been visited. If its visited then we continue to the next iteration (next minimum cost node). Otherwise we add the node to the hashset. Following that, we update the result total by taking the maximum of current total and pathlength/code of this node.
+8. Once we have done that, then we go over the adjacency list and loop over all the neighbours one by one. For each neighbour we will first check it that node has been already visited or not. If the node has not been visited then we push the neighbour node on to the heap. But what should be the weight of this node now??? The cost/weight/time to get the current node + the cost/weight/time to get to the neighbour. This will be the weight.
+9. Once we have gone over the entire graph, we can return total only if the length of visited set is equal to the number of nodes. If not, it means from the starting node we cannot reach to all the nodes, and in that case we will return zero.
+10. The timecomplexity of this algorithm is O(E.logV) since we have to go through all the edges and then push values to the heap. Which is basically E.logE but we know total edges => E = V^2. So that will be E.logV^2. And by log opertation it will be 2.ElogV. which in big O can be written as O(ElogV) and the space complexty is O(E).
