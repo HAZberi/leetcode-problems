@@ -23,6 +23,22 @@ print("Test Case 2: ", my_topDown_solution.longestCommonSubsequence("abc", "abc"
 print("Test Case 3: ", my_topDown_solution.longestCommonSubsequence("abc", "def"))
 
 
+class BottomUpSolution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        dp = [[0 for _ in range(len(text2) + 1)] for _ in range(len(text1) + 1)]
+        
+        for i in range(len(text1) - 1, -1, -1):
+            for j in range(len(text2) - 1, -1, -1):
+                if text1[i] == text2[j]:
+                    dp[i][j] = 1 + dp[i + 1][j + 1]
+                else:
+                    dp[i][j] = max(dp[i][j + 1], dp[i + 1][j])
+        
+        return dp[0][0]
 
-
+#Test Cases:
+my_bottomUp_solution = BottomUpSolution()
+print("Test Case 1: ", my_bottomUp_solution.longestCommonSubsequence("abcde", "ace"))
+print("Test Case 2: ", my_bottomUp_solution.longestCommonSubsequence("abc", "abc"))
+print("Test Case 3: ", my_bottomUp_solution.longestCommonSubsequence("abc", "def"))
 
