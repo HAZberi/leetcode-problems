@@ -1,0 +1,8 @@
+**Notes:**
+
+1. The problem asks us to find the power to the n for the variable x. Then power can be in negative. The variable can be x as well. But if x = 0 then n > 0.
+2. The problem looks simple because we can multiply x a total of n times. And if n is negative than we can simply calculate the positive n and then just before returning the result, we will divide the result by 1. This solution will have a time complexity of O(n). Is it the optimal solution. Not really, we can break this problem up and achieve a better time complexity.
+3. We can use the divide and conquer technique to solve this problem. So how can we do that. We know that if we have a 2 ^ 10 to calculate then we can split it up this into two computations and then multiply both to get the result. 2 ^ 10 = 2 ^ 5 x 2 ^ 5 like so. So if we simply keep on dividing the problem in half until we hit a base case where n = 0. We can achieve n = 0 by simply interger dividing n by 2. So basically our recursive call divides the problem and then we multiply the result with itself.
+4. There is a catch though, if n is even then this technique works flawlessly. But if n is odd then we have to multiply the final result with x one time as well. 2 ^ 5 = 2 x 2 ^2 x 2 ^2. This case can be dealt with a ternary condition.
+5. There is one more base case or more of an edge case. If x = 0 then we will simply return 0. It does not matter how big or small the value of n is. If x = 0. Our result will be zero as well.
+6. The time complexity of this problem after divide and conquer recursive technique is O(logn). The space complexity is also O(logn) which comes from the call stack.
