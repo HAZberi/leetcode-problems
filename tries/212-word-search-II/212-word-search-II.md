@@ -11,4 +11,5 @@
 9. Once we have a valid character on the board. First we will add its location to the visit hashset. Then we will update the node to children character. Then we add this character to the current word. After that we will check whether this node in end ofthe word. If it is end of the word then we add this word to the result.
 10. After than we will run DFS in all four directions of the gird. Once the all four recursive calls are complete we remove the current cell from the visit hashset.
 11. Now in order to call this DFS method on each of the board. We will use a nested loop and call the DFS on each cell passing in cell location, root node and empty string.
-12. The time complexity of this solution is O(m.n x 4 ^ m.n) and the space complexity is O(w).
+12. Finally before returning the result hashset, we have to convert it to a list.
+13. The time complexity of this solution is O(m.n x 4 ^ m.n) and the space complexity is O(w).
