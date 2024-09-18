@@ -32,6 +32,8 @@ Follow up:
 Could you solve this problem in less than O(n) complexity?
 """
 
+import math
+
 class BruteForceSolution:
     def kthFactor(self, n: int, k: int) -> int:
         factors = []
@@ -45,8 +47,23 @@ class BruteForceSolution:
 
 #Test Case
 mysolution = BruteForceSolution()
-print("Test Case 1:", mysolution.kthFactor(12, 3))
-print("Test Case 1:", mysolution.kthFactor(7, 2))
-print("Test Case 1:", mysolution.kthFactor(4, 4))
+class OptimizedSolution:
+    def kthFactor(self, n: int, k: int) -> int:
+        factors = []
+        for i in range(1, int(math.sqrt(n)) + 1):
+            if n % i == 0:
+                factors.append(i)
+        
+        for j in range(len(factors) - 1, -1, -1):
+            if factors[j] != n // factors[j]:
+                factors.append(n // factors[j])
+
+        return factors[k - 1] if k <= len(factors) else -1
+
+#Test Case
+mysolutionO = OptimizedSolution()
+print("Test Case 1:", mysolutionO.kthFactor(12, 3))
+print("Test Case 1:", mysolutionO.kthFactor(7, 2))
+print("Test Case 1:", mysolutionO.kthFactor(4, 4))
 
 
