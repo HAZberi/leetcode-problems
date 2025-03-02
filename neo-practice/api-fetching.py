@@ -17,19 +17,20 @@ else:
     print(f'The length of response data has a total of {len(response_data)} items')
 
     # Sort a list of dictionaries by two
-    print(sorted(response_data, key=lambda x:(x['userId'], x['id']), reverse=True))
+    # print(sorted(response_data, key=lambda x:(x['userId'], x['id']), reverse=True))
     # Extract id and userids only
     extract = list(map(lambda x: {"id": x['id'], "user_id": x['userId']}, response_data))
     # Filter id and titles by userid 10
     get_titles_by_user_id_10 = list(map(lambda y: {"id": y['id'], "title": y['title']}, filter(lambda x: x['userId'] == 10, response_data)))
-    # print(*get_titles_by_user_id_10, sep='\n')
+    get_titles_by_user_id_10 = sorted(get_titles_by_user_id_10, key=lambda x:x['id'])
+    print(*get_titles_by_user_id_10, sep='\n')
     # Number of posts by each user
     posts_per_user = {}
     for post in response_data:
         posts_per_user[post['userId']] = 1 + posts_per_user.get(post['userId'], 0)
     # print("UserID\tNumber of Posts" )
-    for user_id, num_posts in posts_per_user.items():
-        print(f'{user_id}\t{num_posts}')
+    # for user_id, num_posts in posts_per_user.items():
+        # print(f'{user_id}\t{num_posts}')
     
     # Post Titles Grouped by UserId
     titles_by_user = {}
