@@ -16,7 +16,7 @@ else:
     response_data = json.loads(r.text)
     print(f'The length of response data has a total of {len(response_data)} items')
 
-    # Sort a list of dictionaries by two keys
+    # Sort a list of dictionaries by two
     print(sorted(response_data, key=lambda x:(x['userId'], x['id']), reverse=True))
     # Extract id and userids only
     extract = list(map(lambda x: {"id": x['id'], "user_id": x['userId']}, response_data))
