@@ -53,11 +53,12 @@ def main():
         pattern = sound_pattern(sound)
         count = count_possible_words(pattern, dictionary)
         possible_words.append(count)
-    
-    return possible_words
 
-print(main())
+    print(possible_words)
 
+
+
+main()
        
         
 
