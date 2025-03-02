@@ -2,7 +2,7 @@ import requests  # type: ignore
 import json
 
 def fetch_data():
-    response = requests.get("https://examples.lotworks.ca/interview/audrey-small.json")
+    response = requests.get("https://examples.lotworks.ca/interview/audrey-large.json")
     result = json.loads(response.text)
     return result['Dictionary'], result['Sounds']
 
