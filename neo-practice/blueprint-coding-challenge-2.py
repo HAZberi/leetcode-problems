@@ -2,7 +2,7 @@ import requests  # type: ignore
 import json
 
 def fetch_data():
-    response = requests.get("https://examples.lotworks.ca/interview/audrey-large.json")
+    response = requests.get("https://examples.lotworks.ca/interview/audrey-small.json")
     result = json.loads(response.text)
     return result['Dictionary'], result['Sounds']
 
@@ -31,6 +31,7 @@ def sound_pattern(sound):
 
 def count_possible_words(pattern, dictionary):
     count = 0
+    possible_words = []
 
     for word in dictionary:
         if len(word) != len(pattern):
@@ -42,21 +43,23 @@ def count_possible_words(pattern, dictionary):
                 break
         if match:
             count += 1
+            possible_words.append(word)
     
-    return count
+    return count, possible_words
 
 def main():
     dictionary, sounds = fetch_data()
-    possible_words = []
+    possible_words_detail = []
 
     for sound in sounds:
         pattern = sound_pattern(sound)
-        count = count_possible_words(pattern, dictionary)
-        possible_words.append(count)
+        count, possible_words = count_possible_words(pattern, dictionary)
+        possible_words = ", ".join(possible_words)
+        possible_words_detail.append(f'Sound: {sound}\nCount: {count}\nPossible Words: {possible_words}')
+    
+    print("\n\n".join(possible_words_detail))
 
-    print(possible_words)
-
-
+    
 
 main()
        
